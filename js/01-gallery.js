@@ -30,19 +30,20 @@ function imgScale(event) {
 
 function addEscapeListener() {
   document.addEventListener("keydown", escapeListener);
-  // console.log("add");
+  console.log("add");
 }
 
 function removeEscapeListener() {
   document.removeEventListener("keydown", escapeListener);
-  // console.log("removing");
+  console.log("removing");
 }
 
 function escapeListener(event) {
   if (event.key.toLowerCase() === "escape") {
     instance.close();
-    // console.log("listening...");
+    event.target.blur();
   }
 }
 
+//! Methods elem.focus() and elem.blur() set element to focus/blur
 // const imgAlt = event.target.getAttribute("alt"); (function imgScale)
