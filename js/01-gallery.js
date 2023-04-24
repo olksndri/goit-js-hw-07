@@ -13,7 +13,7 @@ const images = galleryItems.reduce((prevVal, elem) => {
 gallery.innerHTML = images;
 
 gallery.addEventListener("click", imgScale);
-gallery.addEventListener("focusout", (event) => {
+gallery.addEventListener("focusout", () => {
   removeEscapeListener();
 });
 
@@ -35,7 +35,7 @@ function addEscapeListener() {
 
 function removeEscapeListener() {
   document.removeEventListener("keydown", escapeListener);
-  console.log("removing");
+  console.log("remove");
 }
 
 function escapeListener(event) {
