@@ -12,7 +12,15 @@ const images = galleryItems.reduce((prevVal, elem) => {
 
 gallery.innerHTML = images;
 
-gallery.addEventListener("click", imgScale);
+//! Помилка з перевіркою області кліку виправлена
+//! Закоментуйте даний код, якщо розкоментовуєте код з 56 рядка
+gallery.addEventListener("click", (event) => {
+  document.querySelectorAll("ul.gallery img").forEach((element) => {
+    if (event.target === element) {
+      imgScale(event);
+    }
+  });
+});
 gallery.addEventListener("focusout", () => {
   removeEscapeListener();
 });
@@ -45,5 +53,41 @@ function escapeListener(event) {
   }
 }
 
-//! Methods elem.focus() and elem.blur() set element to focus/blur
-// const imgAlt = event.target.getAttribute("alt"); (function imgScale)
+//! Розкоментуйте код нижче, щоб побачити той же функціонал, але через опції бібліотеки
+// gallery.addEventListener("click", (event) => {
+//   document.querySelectorAll("ul.gallery img").forEach((element) => {
+//     if (event.target === element) {
+//       imgScale(event);
+//     }
+//   });
+// });
+
+// let instance = basicLightbox.create(``);
+
+// function imgScale(event) {
+//   event.preventDefault();
+//   const imgSrc = event.target.dataset.source;
+//   instance = basicLightbox.create(
+//     `
+//     <img class="gallery__image" src="${imgSrc}" width="800" height="600"/>`,
+//     {
+//       onShow: (instance) => {
+//         document.addEventListener("keydown", escapeListener);
+//         console.log("add");
+//       },
+//       onClose: (instance) => {
+//         document.removeEventListener("keydown", escapeListener);
+//         console.log("remove");
+//       },
+//     }
+//   );
+//   instance.show();
+// }
+
+// function escapeListener(event) {
+//   if (event.key.toLowerCase() === "escape") {
+//     instance.close();
+//   }
+// }
+
+//? Methods elem.focus() and elem.blur() set element to focus/blur

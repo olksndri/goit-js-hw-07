@@ -20,5 +20,3 @@ const options = {
 };
 
 let lightbox = new SimpleLightbox(".gallery a", options);
-lightbox.on("show.simplelightbox", function () {});
-// console.log(galleryItems);
